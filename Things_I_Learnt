@@ -1,0 +1,27 @@
+-----
+
+Difference between
+
+[1] contract CounterTest is Test{}
+[2] Counter public counter; 
+[3] counter = new Counter();
+
+(1) This is creating a child contract, that inherits from the parent "Test"
+(1) It inherits, public methods and properties, internal methods and properties, external has to be called via "this", does not get access to private methods and properties.
+
+(2) This is declaring a variable that can hold address of type "Counter"
+
+(3) This is deploying another contract, whose address is stored into the "counter" variable declared earlier. It gives access to public, and external functions.
+
+-----
+
+vm.deal		set ETH balance
+vm.assume	filter fuzz inputs
+vm.prank	fake msg.sender
+vm.startPrank	persistent sender
+
+-----
+
+Foundry Flags
+
+--mt [--match-test] "Tells foundry to run only those tests, that match the test function's name. ```forge --mt functionNamewithBrackets```
