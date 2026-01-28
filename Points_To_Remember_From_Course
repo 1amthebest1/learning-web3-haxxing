@@ -1,0 +1,36 @@
+
+---
+- forge test
+
+A test is fuzzed if and only if it has one or more parameters.
+
+The testFuzz_ prefix is just:
+
+a convention
+
+for readability
+
+for filtering with --mt testFuzz
+---
+
+To write stateful fuzzing you need to "import {StdInvariant} from "forge-std/StdInvariant.sol", and then inheret in the test
+
+Then you add "targetContract(address(exampleContract))" in setUp().
+
+---
+
+Your functions should have the syntax " invariant_(functionName) ", basically invariant keyword before function name.
+
+---
+
+The thing is forge fuzzez your function by itself, and after each fuzz calls your function to verify the assert is correct.
+
+---
+
+Foundry does random fuzzing, to random functions by itself.
+
+---
+
+Foundry Fuzzing: Stateless Fuzzing.
+Foundry Invariant: Stateful Fuzzing.
+
