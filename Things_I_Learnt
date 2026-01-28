@@ -25,3 +25,24 @@ vm.startPrank	persistent sender
 Foundry Flags
 
 --mt [--match-test] "Tells foundry to run only those tests, that match the test function's name. ```forge --mt functionNamewithBrackets```
+
+-----
+
+Stateless fuzzing: random inputs, fresh state each time
+
+Stateful fuzzing: random sequences, same state carried forward
+
+A global invariant is a property that must always hold true for the entire contract/system, no matter what sequence of actions occurs.
+
+-----
+
+Stateful fuzzing: Ending state of previous fuzz run is the starting state of the next fuzz run.
+
+-----
+
+Run a single test file
+forge test --mp test/Counter.t.sol
+
+-----
+
+public state variables are actually exposed as getter functions. That’s why you need parentheses in assertEq.
