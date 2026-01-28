@@ -1,0 +1,50 @@
+1️⃣ EIP — Ethereum Improvement Proposal
+
+An EIP is a design proposal for:
+
+Core protocol changes
+
+New features
+
+Standards
+
+Best practices
+
+Think of EIPs like RFCs for Ethereum (same idea as internet standards).
+
+They answer:
+
+“How should Ethereum evolve or behave?”
+
+Types of EIPs
+
+There are three main categories:
+
+Core EIPs
+Change how Ethereum itself works
+Example:
+
+EIP-1559 → changed gas fees & introduced burn mechanism
+
+
+----
+
+ERC: Ethereum Request For Comments.
+
+An ERC is just a subtype of EIP that defines standards for smart contracts.
+
+They answer:
+
+“How should smart contracts behave so all apps can understand them?”
+
+ERCs mainly define:
+
+Function names
+
+Events
+
+Return values
+
+Rules
+
+So wallets, dApps, and exchanges can work with them consistently.

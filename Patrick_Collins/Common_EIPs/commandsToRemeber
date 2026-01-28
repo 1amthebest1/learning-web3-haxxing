@@ -1,0 +1,69 @@
+
+forge install [Package name here?, patrick coppied the path of the git repo like (OpenZeppelin/openzeppelin-contracts)] --no-commit
+
+--
+
+solidity imports are logical paths, so you have to remappings in foundry.toml, to tell it where to find the code for the library
+
+
+remappings = ["@openzeppelin/=lib/openzeppelin-contracts/"]
+
+your contract has: import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+foundry resolves it to lib/openzeppelin-contracts/contracts/token ...
+
+--
+
+Remappings must end with /
+
+"@openzeppelin/=lib/openzeppelin-contracts/"   ✅
+"@openzeppelin=lib/openzeppelin-contracts"     ❌
+
+
+Order matters (first match wins)
+
+They are just string replacements, not imports themselves
+
+--
+
+the @ has no technical meaning to Foundry or Solidity.
+It’s just a naming convention borrowed from npm / JavaScript ecosystems.
+
+Remappings work the same whether they start with @ or not.
+
+--
+
+ERC20 is a contract, not a library.
+
+To use it's functions you have to inherit it, the compiler copies other libray functions like strings inline into your contract.
+
+--
+
+Child contract can call multiple parent constructors if using multiple inheritance:
+
+contract A { constructor(uint x) {} }
+contract B { constructor(uint y) {} }
+
+contract C is A, B {
+    constructor() A(10) B(20) {}
+}
+
+
+The child constructor must call parent constructors if they require arguments.
+If the parent constructor has no arguments, Solidity calls it automatically.
+
+You cannot define two constructors in the same contract.
+Solidity only allows one constructor per contract, like most languages.
+
+--
+
+Super can only be used with functions, not constructors.
+
+--
+
+Parent constructor call = deployment-time initialization
+super = runtime function delegation in inheritance
+
+--
+
+Solidity doesn’t allow constructor calls in the function body.
