@@ -1,0 +1,38 @@
+
+---
+All smart contracts have this thing called storage, everytime you create a state variable, it creates a storage slot for that variable.
+
+uint public number1
+uint public number2
+
+This takes 2 storage slots.
+---
+
+Constant variable will not show up in storage, because its actually stored in contract byte-code.
+
+uint public constant number3 = 4;
+
+--
+you can think of storage as a big giant array of variables we create.
+
+just like an array the next storage variable will be stored in slot[1].
+
+they got stored as hex in storage slots, hex of bool (true) is 0x0000...01
+
+--
+
+variables that are dynamic are stored in slots through some type of hashing function. Only the length of the array or mapping is stored in storage slot.
+
+--
+
+The variables declared inside a function body, only exist for the duration of function execution, they don't persist.
+
+--
+
+Why do we need memory keyword for strings?
+
+Ans: Because strings are technically dynamically sized arrays.
+
+--
+
+Arrays and mappings can take up a lot of space, so solidity wants to know, if we are working with storage, or memory.

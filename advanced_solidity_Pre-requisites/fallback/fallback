@@ -1,0 +1,33 @@
+
+--
+Solidity smart contracts will reject by default the ETH sent to them.
+--
+
+--
+There are two functions, Fallback(), and Recieve(), they can be made external payable via
+
+fallback() external payable {}
+recieve() external payable {}
+
+--
+
+			is msg.data empty?
+
+			  /        \
+			 /	    \
+			yes	    no
+		       /	      \
+		      /		    fallback()
+	            recieve()?
+	            /       \
+		   /         \
+		  yes         no
+		 /             \
+		recieve()      fallback()
+--
+
+if fallback is not payable, it will not be called on the absence of recieve function.
+
+--
+
+Without these, the smart contract cannot recieve native eth. Solidity will compile this contract to reject any ETH sent to it.

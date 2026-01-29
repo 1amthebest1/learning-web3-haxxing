@@ -1,0 +1,16 @@
+
+Fungible: (of a product), means replacable by another identical item. like $1 is inter-changable with another $1.
+
+Non-Fungible: means not replaceable by another, like pokemon cards.
+
+NFT's in web3 are AAARRTT.
+
+You can buy them directly from the smart contract, since its decentralized, but opensea etc, provides a good user interface to do so.
+
+NFT's are built on the ERC-721 standard.
+
+Many projects use IPFS which is decentralized, but kind of centralized.
+
+---
+
+The InterPlanetary File System (IPFS) is a peer-to-peer (P2P) decentralized network protocol designed to store, share, and access files, websites, and data. Unlike the traditional, centralized HTTP web, IPFS uses content-addressing to locate data based on its unique hash, enabling faster, more reliable, and censorship-resistant data retrieval across distributed nodes
