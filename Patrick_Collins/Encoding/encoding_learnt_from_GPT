@@ -1,0 +1,42 @@
+
+Encoding = converting a function call + its arguments into raw bytes so that the EVM can understand and execute it.
+
+Smart contracts don't understand 
+
+	transfer(address, uint256)
+
+They understand only
+
+	0xa9059cbb000000000000000000000000...
+
+The byte string is ABI-encoded calldata.
+
+--
+
+How to create byte code, for RPC
+
+	Construct Transaction [nonce, gasPrice, gasLimit, to(contract address), value, data, chainId] -> RLP encode (unsigned) -> kessac_hash(RLP encoded (unsigned)) -> sign (kessac_hash) -> Construct Transaction [nonce, gasPrice, gasLimit, to(contract address), value, data, chainId] -> RLP encode(signed) -> RPC call.
+
+--
+
+A transaction = a cryptographically signed instruction broadcast to the network that validators/miners can verify and include in a block.
+
+--
+
+From – sender address
+
+To – receiver or contract address
+
+Value – amount of crypto sent
+
+Data – function calls etc.
+
+Gas / Fee – cost to process the transaction
+
+Nonce – counter to prevent replay & keep order
+
+Signature [v, r, s] – proof the sender approved it
+
+Chain ID – which network (Ethereum, testnet, etc.)
+
+--
