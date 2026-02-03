@@ -1,0 +1,23 @@
+
+You basically do a fork of the mainnet, via an API key etc, from a node like, alchemy.
+
+forge --fork-url $MAINNET_URL
+
+--
+
+You can also do it in your test contracts, in the setUp() function via
+
+	vm.createSelectFork({blockNumber: someBlockNumber(int), urlOrAlias: ""})
+
+--
+
+You can do it in your foundry.toml as well, via the syntax
+
+[rpc_endpoints]
+mainnet = "{GLOBAL_VA}"
+
+in test you can do it then
+
+vm.createSelectFork({blockNumber: 0, urlOrAlias: "mainnet"})
+
+and if you do forge test, the test will automatically run a fork.

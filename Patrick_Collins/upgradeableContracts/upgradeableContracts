@@ -1,0 +1,33 @@
+
+Delegate = let someone else execute the work, but in my context.
+
+---
+delegatecall means:
+
+“Run the code from another contract, but use MY storage, MY balance, and MY msg.sender.”
+---
+
+A proxy is a contract whose main job is NOT to hold logic, but to:
+
+forward (relay) function calls to another contract (called the implementation or logic contract).
+
+So instead of users calling the logic contract directly, they call the proxy.
+
+User → Proxy → Implementation
+
+
+The proxy:
+
+stores data (state variables)
+
+forwards function calls
+
+returns results back to the user
+
+---
+
+Yul is inline assembly inside of solidity, and it allows you to write really low level code, close to the opcodes.
+
+---
+
+Skipping this now, due to lack of basics in proxy contracts, making it harder for me to understand [look how proxy contracts work].

@@ -98,3 +98,23 @@ abi.decode() cannot decode packed encoding.
 ---
 
 packed encoding is similar to type-casting.
+
+---
+
+Function Call Transaction:
+
+=> nonce
+=> gas price
+=> gas limit
+=> To: address the tx is sent to.
+=> Data: what to sent to the address.
+=> v, r, s.
+
+--- 
+
+call: How we call functions to change the state of the blockchain.
+staticcall: This is how (at low level) we do our view, and pure function calls
+
+---
+
+call has parameters, for gas price, limit, value, and more...[look into it].

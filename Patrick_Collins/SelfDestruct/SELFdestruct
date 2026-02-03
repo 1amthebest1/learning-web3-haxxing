@@ -1,0 +1,20 @@
+selfdestruct:
+
+Sends ETH to an address
+
+Disables contract
+
+Does NOT truly erase code anymore
+
+Can be abused
+
+Is deprecated in spirit
+
+Should almost never be used in new contracts
+
+---
+
+selfDestruct() allows you to push ETH into a contract!!!.
+
+you can exploit a logic flaw etc...
+

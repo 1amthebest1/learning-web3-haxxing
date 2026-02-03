@@ -1,0 +1,20 @@
+
+The blockchain doesn’t know about:
+
+function names
+
+variable names
+
+types like uint or address
+
+It only knows:
+
+bytes in → execute → bytes out
+
+---
+
+So full calldata =
+
+[4 bytes selector][32 bytes arg1][32 bytes arg2]...
+
+
