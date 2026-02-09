@@ -1,0 +1,38 @@
+--
+Static Analysis
+--
+
+Slither, Adern
+
+- They don't run any of your code, but dumbly look for pattern matching.
+
+---
+Stateful, and Stateless Fuzzing
+---
+
+---
+Formal Verification
+---
+
+Converting Software to Mathematical Expressions!?
+
+---
+
+-> Majority of bugs are BLE... Wow substantially different from web-apps 
+
+---
+
+A protocol usually includes:
+
+Several smart contracts (not just one)
+
+Rules for how users interact
+
+Token economics (fees, rewards, governance)
+
+Sometimes frontends (web apps)
+
+Oracles (price feeds)
+
+Governance mechanisms
+

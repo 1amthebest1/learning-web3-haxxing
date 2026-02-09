@@ -1,0 +1,6 @@
+An oracle is a bridge between the blockchain and the real world.
+Blockchains are blind by design — they cannot access internet data, APIs, or real-world events on their own. An oracle feeds that external data into smart contracts.
+
+So in one sentence:
+
+An oracle is a system that provides off-chain data to on-chain smart contracts in a trustworthy way.
