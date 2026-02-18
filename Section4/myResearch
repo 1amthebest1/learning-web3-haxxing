@@ -1,0 +1,53 @@
+This only happens if:
+
+The attacker forgets to implement a way to withdraw
+
+OR uses a contract with no withdrawal logic
+
+OR receives ETH but has no payable function (tx reverts anyway)
+
+===
+
+ERC20 can be sent to ANY address, including contracts with no code to handle them
+Even if attacker contract has:
+
+no functions
+
+no fallback
+
+no withdraw method
+
+===
+
+ERC20 tokens get stuck if:
+
+Attacker contract has no withdrawal function
+
+===
+
+ERC721 does NOT check receiver contract supports NFTs if using transferFrom.
+
+===
+
+In an interface, it must be declared as external, even if the original contract uses public.
+
+===
+
+address[] memory players = new address[](1);
+
+===
+
+interface IPuppyRaffle {
+    function enterRaffle(address[] memory newPlayers) external payable;
+    function refund(uint256 playerIndex) external;
+    function getActivePlayerIndex(address player) external view returns (uint256);
+}
+
+contract PuppyRaffleExploit {
+
+    IPuppyRaffle public target;
+    address public owner;
+    uint256 public index;
+    uint256 public attackCount;
+    uint256 public maxAttacks;
+}

