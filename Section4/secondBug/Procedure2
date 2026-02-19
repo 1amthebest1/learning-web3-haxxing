@@ -1,0 +1,35 @@
+
+---
+PUPPY RAFFLE OWNER:
+	
+	0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
+
+---
+entry fees: 1000
+
+---
+attacker
+
+	0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
+	0x9bF88fAe8CF8BaB76041c1db6467E7b37b977dD7	
+
+exploit attempts
+
+	10
+
+---
+participants
+
+	0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db
+	0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB
+	0x617F2E2fD72FD9D5503197092aC168c91465E7f2
+	0x17F6AD8Ef982297579C203069C1DbfFE4348c372
+
+---
+
+Our contract should have 4000
+
+---
+
+We can do re-entrancy, but the thing is we do not get money, since its given from the prize pool.
+However we can do winner prediction.
