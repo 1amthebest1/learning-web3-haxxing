@@ -1,0 +1,74 @@
+
+We installed slither, which is a pattern matching tool [static-analysis].
+
+
+Example analogy (simple)
+
+Car trip:
+
+Gas limit = fuel tank size
+
+Transaction cost = fuel actually burned
+
+Execution cost = fuel burned only while driving (not starting engine, warming up, toll booth, etc.)
+
+---
+
+DOS attacks
+
+	loops!
+	
+	you DOS the smart contract by abusing this functionality, such as unbounded loops to make the transaction exceed the max block gas limit.
+
+--- 
+
+You can forcefully send ETH to a smart contract using self-destruct in your exploit contract, so never rely on address(this).balance;
+
+---
+
+DOS, is basically not allowing something to happen by breaking something, when that thing has to happen.
+
+---
+
+WHEN COMING ACROSS FOR LOOPS, ASK YOURSELF
+
+-> is it bounded to a certain size?
+
+-> Look for external calls, and ask yourself is there a way for these calls to fail?
+
+OTHER WAYS 
+
+-> sending eth to a contract that doesn't accept it
+
+-> calling a function that doesn't exist, and there's no fallback function
+
+-> The external call execution runs out of gas.
+
+-> Third party contract is simply malicious.
+
+---
+
+In Solidity, the
+new keyword is used for arrays declared with the memory data location to dynamically allocate memory and set their fixed size at runtime. 
+
+
+but for storage new does not create dynamic array.
+--- 
+
+Mempool transparency: pending transactions are public, so bots can see them before they’re mined.
+---
+
+Transaction ordering is fully under the block producer’s control.
+
+Decentralized networks don’t have a central authority to enforce “fair ordering.”
+
+
+=====
+
+| Feature        | `import`                              | `using <library> for <type>`                  |
+| -------------- | ------------------------------------- | --------------------------------------------- |
+| Purpose        | Make code from another file available | Attach library functions to a type as methods |
+| Effect on type | None                                  | Extends type with library functions           |
+| Syntax needed  | `import "..."`                        | `using Library for Type;` (after import)      |
+| Calls          | Must be explicit: `Library.func(x)`   | Can call like `x.func(y)`                     |
+
