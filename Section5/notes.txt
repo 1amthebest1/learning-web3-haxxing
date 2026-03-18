@@ -1,0 +1,6 @@
+
+---
+This section is more focused on DEFI, invariants, and less on manual review.
+---
+
+You write a fuzz test, by having your test function a parameter, which then gets used to call the contract's functions using that parameter to see, if your invariant break.x

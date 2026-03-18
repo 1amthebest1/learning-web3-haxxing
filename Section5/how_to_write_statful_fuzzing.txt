@@ -1,0 +1,25 @@
+
+(1) Import StdInvariant
+
+-> import {StdInvariant} from "forge-std/StdInvariant.sol";
+
+(2) Inherit it in your test contract
+
+-> contract MyContractTest is StdInvariant {}
+
+(3) In setUp(), you tell it which contract to do stateful fuzzing on
+
+-> function setUp() public {
+
+	exampleContract = new MyContract(); 
+
+	targetContract(address(exampleContract));
+   }
+
+(4) Foundry is going to grab, any and all functions from the contract, and call it in random order, with random data.
+
+(5) Then you write a checker in your test to validate your invariant did not change.
+
+-> function invariant_testShouldAlwaysReturnZero() public {
+	assert(exampleContract.shouldAlwaysBeZero()==0);
+   }
